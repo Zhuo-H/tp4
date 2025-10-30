@@ -1,13 +1,16 @@
-class rectangle:
+
+class Rectangle:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
     def calcul_aire(self):
         print(self.x * self.y)
+
     def info(self):
         print(f"la longuer est{self.x} et la largeur est {self.y}")
 
 
-rectangle = rectangle(10,4)
+rectangle = Rectangle(10, 4)
 rectangle.calcul_aire()
 rectangle.info()
