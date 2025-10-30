@@ -6,6 +6,6 @@ class StringFoo:
         print(self.message.upper())
 
 
-m1 = StringFoo("i like apples")
+m1 = StringFoo("i like apples and bananas")
 
 m1.printstring()
