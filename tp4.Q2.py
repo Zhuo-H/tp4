@@ -7,7 +7,6 @@ class Rectangle:
 
     def calcul_aire(self):
         self.aire = self.x * self.y
-        return self.aire
 
     def info(self):
         print(f"la longuer est {self.x}, la largeur est {self.y} et l'aire est {self.aire}")
