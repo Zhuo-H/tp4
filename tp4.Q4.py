@@ -3,8 +3,8 @@ import random
 
 
 
-def dice(max):
-    result = random.randint(1, max)
+def dice(limit):
+    result = random.randint(1, limit)
     return result
 
 @dataclass
