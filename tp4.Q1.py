@@ -1,11 +1,14 @@
 class StringFoo:
-    def __init__(self, message):
-        self.message = message
+    def __init__(self):
+        self.message = ''
 
-    def printstring(self):
+    def set_string(self, msg):
+        self.message = msg
+
+    def print_string(self):
         print(self.message.upper())
 
 
-m1 = StringFoo("i like apples and bananas")
-
-m1.printstring()
+m1 = StringFoo()
+m1.set_string('i like apples and oranges')
+m1.print_string()
