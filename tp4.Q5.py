@@ -3,8 +3,8 @@ import random
 
 
 
-def dice(max):
-    result = random.randint(1, max)
+def dice(y):
+    result = random.randint(1, y)
     return result
 
 def picker():
@@ -24,6 +24,7 @@ class NPC:
         self.charisma = picker()
         self.sagesse = picker()
         self.name = name
+
     def stats(self):
         print(f"stats of: {self.name}")
         print(f"Name: {self.name}")
@@ -32,23 +33,23 @@ class NPC:
         print(f"Sagesse: {self.sagesse}\n")
 
     def attaque(self, target):
-        self.damage = dice(6)
-        target.hp -= self.damage
-        print(f"{self.name} hit {target.name} for {self.damage}!\n")
+        damage = dice(6)
+        target.hp -= damage
+        print(f"{self.name} hit {target.name} for {damage}!\n")
 
 
     def talk(self, message):
         print(f"{self.name}: {message}\n")
 
-class kobold(NPC):
+class Kobold(NPC):
     pass
 
-class hero(NPC):
+class Hero(NPC):
     pass
 
-jeff = hero("Jeff")
+jeff = Hero("Jeff")
 jeff.stats()
-kobold = kobold("Kobold the 1.294037 * 10^8 th")
+kobold = Kobold("Kobold the 1.294037 * 10^8 th")
 kobold.stats()
 jeff.attaque(kobold)
 kobold.talk("ow")
