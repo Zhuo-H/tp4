@@ -11,6 +11,12 @@ class Rectangle:
         print(f"la longuer est{self.x} et la largeur est {self.y}")
 
 
-rectangle = Rectangle(20, 4)
-rectangle.calcul_aire()
-rectangle.info()
+rectangle1 = Rectangle(20, 4)
+rectangle2 = Rectangle(10, 7)
+
+rectangle1.calcul_aire()
+rectangle2.calcul_aire()
+
+rectangle1.info()
+rectangle2.info()
+
