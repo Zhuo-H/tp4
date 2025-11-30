@@ -34,7 +34,7 @@ class NPC:
     def attaque(self, target):
         self.damage = dice(6)
         target.hp -= self.damage
-        print(f"{self.name} hit {target.name} for {self.damage}!")
+        print(f"{self.name} hit {target.name} for {self.damage}!\n")
 
 
     def talk(self, message):
