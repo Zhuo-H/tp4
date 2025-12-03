@@ -7,7 +7,7 @@ def dice(y):
     return result
 
 def picker():
-    rolls = [dice(6) for _ in range(4)]
+    rolls = [dice(6) for z in range(4)]
     rolls_sorted = sorted(rolls, reverse = True)
     return sum(rolls_sorted[:3])
 
