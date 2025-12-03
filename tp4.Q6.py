@@ -51,7 +51,6 @@ class NPC(Statistique):
     def receive_damage(self, ennemy):
         self.hp -= ennemy.damage
 
-
     def talk(self, message):
         print(f"{self.name}: {message}\n")
 
