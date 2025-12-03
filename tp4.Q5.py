@@ -1,7 +1,5 @@
 import random
 
-
-
 def dice(y):
     result = random.randint(1, y)
     return result
