@@ -24,6 +24,7 @@ class NPC:
         self.charisma = picker()
         self.sagesse = picker()
         self.name = name
+        self.damage = 0
 
     def stats(self):
         print(f"stats of: {self.name}")
@@ -33,25 +34,38 @@ class NPC:
         print(f"Sagesse: {self.sagesse}\n")
 
     def attaque(self, target):
-        damage = dice(6)
-        target.hp -= damage
-        print(f"{self.name} hit {target.name} for {damage}!\n")
+        score = dice(20)
+        if score == 20:
+            self.damage = dice(6) * 2
+            #target.hp -= damage
+            print(f"{self.name} critically hit {target.name} for {self.damage}!\n")
+        elif score == 1:
+            print(f"{self.name} missed {target.name}!\n")
+        else:
+            self.damage = dice(6)
+            #target.hp -= damage
+            print(f"{self.name} hit {target.name} for {self.damage}!\n")
+
+    def receive_damage(self, ennemy):
+        self.hp -= ennemy.damage
 
 
     def talk(self, message):
         print(f"{self.name}: {message}\n")
 
 class Kobold(NPC):
-    pass
+    def __init__(self, name):
+        super().__init__(name)
 
 class Hero(NPC):
-    pass
+    def __init__(self, name):
+        super().__init__(name)
 
 jeff = Hero("Jeff")
 jeff.stats()
 kobold = Kobold("Kobold the 1.294037 * 10^8 th")
 kobold.stats()
 jeff.attaque(kobold)
+kobold.receive_damage(jeff)
 kobold.talk("ow")
 kobold.stats()
-
