@@ -14,7 +14,7 @@ def picker():
 
 
 @dataclass
-class Statistique():
+class Statistique:
     armor: int = field(default_factory = lambda: dice(12))
     hp: int = field(default_factory = lambda: dice(20))
     force: int= field(default_factory = picker)
