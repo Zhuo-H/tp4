@@ -60,7 +60,7 @@ class Hero(NPC):
 
 jeff = Hero("Jeff")
 jeff.stats()
-kobold = Kobold("Kobold")
+kobold = Kobold("kobold")
 kobold.stats()
 jeff.attaque(kobold)
 kobold.receive_damage(jeff)

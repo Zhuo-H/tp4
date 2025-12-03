@@ -39,13 +39,11 @@ class NPC(Statistique):
         score = dice(20)
         if score == 20:
             self.damage = dice(6) * 2
-            #target.hp -= damage
             print(f"{self.name} critically hit {target.name} for {self.damage}!\n")
         elif score == 1:
             print(f"{self.name} missed {target.name}!\n")
         else:
             self.damage = dice(6)
-            #target.hp -= damage
             print(f"{self.name} hit {target.name} for {self.damage}!\n")
 
     def receive_damage(self, ennemy):
