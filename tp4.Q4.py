@@ -33,6 +33,6 @@ class Hero:
 
     def est_vivant(self):
         if self.hp <= 0:
-            return False
+            exit()
         else:
             return True
