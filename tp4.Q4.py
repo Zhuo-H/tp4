@@ -23,6 +23,7 @@ class Hero:
         self.atq = dice(6)
         self.df = dice(6)
         self.name = name
+        self.stats = statistics()
 
     def faire_attaque(self):
         dmg = dice(6) + self.atq
@@ -36,3 +37,7 @@ class Hero:
             return False
         else:
             return True
+
+
+h = Hero("Bob")
+print(h.stats.force)

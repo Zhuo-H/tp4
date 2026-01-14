@@ -1,14 +1,16 @@
-#from dataclasses import dataclass
 import random
+from enum import Enum
 
-
+class Allignement(Enum):
+    LAWFUL_GOOD = 0
+    NEUTRAL_GOOD= 1
 
 def dice(y):
     result = random.randint(1, y)
     return result
 
 def picker():
-    rolls = [dice(6) for _ in range(4)]
+    rolls = [dice(6) for z in range(4)]
     rolls_sorted = sorted(rolls, reverse = True)
     return sum(rolls_sorted[:3])
 
@@ -33,23 +35,34 @@ class NPC:
         print(f"Sagesse: {self.sagesse}\n")
 
     def attaque(self, target):
-        damage = dice(6)
-        target.hp -= damage
-        print(f"{self.name} hit {target.name} for {damage}!\n")
+        attack_value = dice(20)
+        damage = dice(10)
+        if attack_value == 20:
+            target.hp -= damage * 2
+            print(f"{self.name} hit {target.name} citically for {damage}!\n")
+        elif attack_value == 1:
+            print(f"{self.name} hit {target.name} but missed!\n")
+        else:
+            target.hp -= damage
+            print(f"{self.name} hit {target.name} for {damage}!\n")
 
 
     def talk(self, message):
         print(f"{self.name}: {message}\n")
 
 class Kobold(NPC):
-    pass
+    def __init__(self, name):
+        super().__init__(name)
+
 
 class Hero(NPC):
-    pass
+    def __init__(self, name):
+        super().__init__(name)
+
 
 jeff = Hero("Jeff")
 jeff.stats()
-kobold = Kobold("Kobold the 1.294037 * 10^8 th")
+kobold = Kobold("Kobold")
 kobold.stats()
 jeff.attaque(kobold)
 kobold.talk("ow")
