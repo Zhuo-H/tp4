@@ -50,7 +50,7 @@ class NPC:
         damage = dice(10)
         if attack_value == 20:
             target.hp -= damage * 2
-            print(f"{self.name} hit {target.name} citically for {damage}!\n")
+            print(f"{self.name} hit {target.name} citically hit for {damage}!\n")
         elif attack_value == 1:
             print(f"{self.name} hit {target.name} but missed!\n")
         else:
