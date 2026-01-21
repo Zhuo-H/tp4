@@ -1,10 +1,11 @@
 import random
 from enum import Enum
+from dataclasses import dataclass
 
 
 class Allignement(Enum):
     LAWFUL_GOOD = 0
-    NEUTRAL_GOOD= 1
+    NEUTRAL_GOOD = 1
     CHAOTIC_GOOD = 2
     LAWFUL_NEUTRTAL = 3
     TRUE_NEUTRAL = 4
@@ -12,6 +13,22 @@ class Allignement(Enum):
     LAWFUL_EVIL = 6
     NEUTRAL_EVIL = 7
     CHAOTIC_EVIL = 8
+
+@dataclass
+class Item:
+    qte: int
+    name: str
+
+class Backpack:
+
+    def __init__(self):
+        self.list = []
+
+    def add_stuff(self, item):
+        self.list.append(Item(5, 'gold'))
+
+    def remove_stuff(self):
+        pass
 
 
 def dice(y):
@@ -44,6 +61,7 @@ class NPC:
         print(f"Armor: {self.armor}, HP: {self.hp}, Force: {self.force}, Dexterity: {self.dexterity}")
         print(f"Constitution: {self.constitution}, Intelligence: {self.intelligence}, Charisma: {self.charisma}")
         print(f"Sagesse: {self.sagesse}\n")
+        print(f"Allignement: {self.karma}\n")
 
     def attaque(self, target):
         attack_value = dice(20)
@@ -77,9 +95,9 @@ class Hero(NPC):
         super().__init__(name, karma)
 
 
-jeff = Hero("Jeff", Allignement.LAWFUL_GOOD)
+jeff = Hero("Jeff", Allignement.LAWFUL_GOOD.name)
 jeff.stats()
-kobold = Kobold("Kobold", Allignement.CHAOTIC_EVIL)
+kobold = Kobold("Kobold", Allignement.CHAOTIC_EVIL.name)
 kobold.stats()
 jeff.attaque(kobold)
 kobold.talk("ow")
