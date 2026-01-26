@@ -22,13 +22,20 @@ class Item:
 class Backpack:
 
     def __init__(self):
-        self.list = []
+        self.item_list = []
 
-    def add_stuff(self, item):
-        self.list.append(Item(5, 'gold'))
+    def add_stuff(self, item_to_add: Item):
+        if len(self.item_list) == 0:
+            self.item_list.append(item_to_add)
+        else:
+            for item in self.item_list:
+                if item.name == item_to_add.name:
+                    item.qte += item_to_add.qte
+                else:
+                    self.item_list.append(item_to_add)
 
-    def remove_stuff(self):
-        pass
+    def remove_stuff(self, position):
+        self.item_list.pop(position)
 
 
 def dice(y):
@@ -103,4 +110,12 @@ jeff.attaque(kobold)
 kobold.talk("ow")
 kobold.stats()
 kobold.check_alive()
+
+
+bag = Backpack()
+bag.add_stuff(Item(5, "gold"))
+bag.add_stuff(Item(5, "gold"))
+print(bag.item_list)
+bag.remove_stuff(0)
+print(bag.item_list)
 
