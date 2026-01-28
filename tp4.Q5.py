@@ -25,17 +25,32 @@ class Backpack:
         self.item_list = []
 
     def add_stuff(self, item_to_add: Item):
+        found_item = False
         if len(self.item_list) == 0:
             self.item_list.append(item_to_add)
         else:
             for item in self.item_list:
                 if item.name == item_to_add.name:
                     item.qte += item_to_add.qte
-                else:
-                    self.item_list.append(item_to_add)
+                    found_item = True
+            if not found_item:
+                self.item_list.append(item_to_add)
 
-    def remove_stuff(self, position):
-        self.item_list.pop(position)
+    def remove_stuff(self, item_romove: Item):
+        self.item_removable = True
+        if self.item_removable == True:
+            for item in self.item_list:
+                if item.name == item_romove.name:
+                    #something wrong
+                    if item.qte < item_romove.qte:
+                        item.qte -= item_romove.qte
+                        self.item_removable = False
+                    else:
+                        print("not enough")
+                else:
+                    self.item_removable = False
+    def check_bag(self):
+        print(self.item_list)
 
 
 def dice(y):
@@ -101,21 +116,23 @@ class Hero(NPC):
     def __init__(self, name, karma):
         super().__init__(name, karma)
 
-
-jeff = Hero("Jeff", Allignement.LAWFUL_GOOD.name)
-jeff.stats()
-kobold = Kobold("Kobold", Allignement.CHAOTIC_EVIL.name)
-kobold.stats()
-jeff.attaque(kobold)
-kobold.talk("ow")
-kobold.stats()
-kobold.check_alive()
+#
+# jeff = Hero("Jeff", Allignement.LAWFUL_GOOD.name)
+# jeff.stats()
+# kobold = Kobold("Kobold", Allignement.CHAOTIC_EVIL.name)
+# kobold.stats()
+# jeff.attaque(kobold)
+# kobold.talk("ow")
+# kobold.stats()
+# kobold.check_alive()
 
 
 bag = Backpack()
 bag.add_stuff(Item(5, "gold"))
 bag.add_stuff(Item(5, "gold"))
-print(bag.item_list)
-bag.remove_stuff(0)
-print(bag.item_list)
+bag.add_stuff(Item(5, "silver"))
+bag.add_stuff(Item(5, "bronze"))
+bag.remove_stuff(Item(20, "gold"))
+bag.check_bag()
+
 
