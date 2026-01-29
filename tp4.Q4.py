@@ -1,3 +1,9 @@
+""""""""""
+
+TOUS LES INFOS SONT DANS README.md
+
+"""""""""
+
 from dataclasses import dataclass
 import random
 

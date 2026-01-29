@@ -1,3 +1,9 @@
+""""""""""
+
+TOUS LES INFOS SONT DANS README.md
+
+"""""""""
+
 import random
 from enum import Enum
 from dataclasses import dataclass

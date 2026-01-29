@@ -1,3 +1,9 @@
+""""""""""
+
+TOUS LES INFOS SONT DANS README.md
+
+"""""""""
+
 import math
 from dataclasses import dataclass
 

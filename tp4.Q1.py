@@ -1,6 +1,6 @@
 """"""""""
-IMPORTANT:
-    TOUS LES INFOS SONT DANS README.md
+
+TOUS LES INFOS SONT DANS README.md
 
 """""""""
 

@@ -1,3 +1,8 @@
+""""""""""
+
+TOUS LES INFOS SONT DANS README.md
+
+"""""""""
 
 class Rectangle:
     def __init__(self, x, y):
