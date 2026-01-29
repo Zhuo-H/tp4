@@ -36,19 +36,24 @@ class Backpack:
             if not found_item:
                 self.item_list.append(item_to_add)
 
-    def remove_stuff(self, item_romove: Item):
-        self.item_removable = True
-        if self.item_removable == True:
-            for item in self.item_list:
-                if item.name == item_romove.name:
-                    #something wrong
-                    if item.qte < item_romove.qte:
-                        item.qte -= item_romove.qte
-                        self.item_removable = False
-                    else:
-                        print("not enough")
-                else:
-                    self.item_removable = False
+    def remove_stuff(self, item_to_remove: Item):
+        for item in self.item_list:
+            if item.name != item_to_remove.name:
+                continue
+
+            if item.qte < item_to_remove.qte:
+                print("not enough")
+                return
+
+            item.qte -= item_to_remove.qte
+            self.item_removable = False
+
+            if item.qte ==0:
+                self.item_list.remove(item)
+
+            return
+
+
     def check_bag(self):
         print(self.item_list)
 
@@ -101,9 +106,7 @@ class NPC:
         print(f"{self.name}: {message}\n")
 
     def check_alive(self):
-        if self.hp > 0:
-            pass
-        elif self.hp <= 0:
+        if self.hp <= 0:
             print(f"{self.name} is dead")
 
 
@@ -116,15 +119,15 @@ class Hero(NPC):
     def __init__(self, name, karma):
         super().__init__(name, karma)
 
-#
-# jeff = Hero("Jeff", Allignement.LAWFUL_GOOD.name)
-# jeff.stats()
-# kobold = Kobold("Kobold", Allignement.CHAOTIC_EVIL.name)
-# kobold.stats()
-# jeff.attaque(kobold)
-# kobold.talk("ow")
-# kobold.stats()
-# kobold.check_alive()
+
+jeff = Hero("Jeff", Allignement.LAWFUL_GOOD.name)
+jeff.stats()
+kobold = Kobold("Kobold", Allignement.CHAOTIC_EVIL.name)
+kobold.stats()
+jeff.attaque(kobold)
+kobold.talk("ow")
+kobold.stats()
+kobold.check_alive()
 
 
 bag = Backpack()
@@ -132,6 +135,7 @@ bag.add_stuff(Item(5, "gold"))
 bag.add_stuff(Item(5, "gold"))
 bag.add_stuff(Item(5, "silver"))
 bag.add_stuff(Item(5, "bronze"))
+bag.remove_stuff(Item(10, "gold"))
 bag.remove_stuff(Item(20, "gold"))
 bag.check_bag()
 
