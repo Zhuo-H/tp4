@@ -1,3 +1,8 @@
+""""""""""
+TOUS LES INFOS SONT DANS README.md
+
+"""""""""
+
 class StringFoo:
     def __init__(self):
         self.message = ''
